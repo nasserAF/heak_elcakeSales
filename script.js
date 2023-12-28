@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
             case '1':
                 addItemOption('بيبي كيك 2 شخص');
                 addItemOption('ميني كيك 4 اشخاص');
-                addItemOption('ميني كيك 6 اشخاص');
-                addItemOption('ميني كيك 8 اشخاص');
-                addItemOption('كيك 10 اشخاص ');
+                addItemOption('كيك 6 اشخاص');
+                addItemOption('كيك 8 اشخاص');
+                addItemOption('كيك 10 اشخاص');
                 addItemOption('كيك 12 شخص');
                 addItemOption('كيك تواصي');
                 break;
@@ -29,19 +29,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 addItemOption('بيستاشيو');
                 addItemOption('فراولة');
                 break;
-            case '4':
+            case '3':
+                addItemOption('كوكيز');
+                addItemOption('قطع كوكيز');
+                break;
+            case '5':
                 addItemOption('اوريو');
                 addItemOption('لوتس');
                 addItemOption('بيستاشيو');
                 break;
-            case '5':
+            case '6':
                 addItemOption('دونات');
-                addItemOption('كوكيز');
                 addItemOption('ميني تارت');
                 addItemOption('جوزية');
                 addItemOption('كاندي');
             break;
-            case '6':
+            case '7':
                 addItemOption('بالون هواء');
                 addItemOption('بالون هيليوم');
                 addItemOption('ثيمات');
