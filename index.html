@@ -11,7 +11,7 @@
     <h1>المبيـــــعات</h1>
     <hr>
     <form id="employeeForm" name="contact-form" method="post" action="" >
-        <label for="employeeId">Employee ID:</label>
+        <label for="employeeId">الموظف:</label>
         <select id="employeeId" name="employeeId">
             <!-- Populate employee IDs dynamically (e.g., from a database) -->
             <option value="">اختيار الموظف</option> 
@@ -21,7 +21,7 @@
             <!-- Add more options as needed -->
         </select>
 
-        <label for="itemCategory">Item Category:</label>
+        <label for="itemCategory">التصنيف:</label>
         <select id="itemCategory" name="itemCategory">
             <option value="">اختيار التصنيف</option>
             <option value="1">قوالب</option>
@@ -32,7 +32,7 @@
             <option value="6">اكسسوارات</option>
         </select>
 
-        <label for="item">Item:</label>
+        <label for="item">الصنف:</label>
         <select id="item" name="item">
             <option value="">اختيار الصنف</option> <!-- New option -->
             <!-- Populate items dynamically based on selected category -->
@@ -41,13 +41,13 @@
             <!-- If "snacks" is selected, show burger -->
         </select>
 
-        <label for="qty">Quantity:</label>
+        <label for="qty">الكمية:</label>
         <input type="number" id="qty" name="qty" min="1" required>
 
-        <label for="price">Price:</label>
+        <label for="price">السعر:</label>
         <input type="number" id="price" name="price" min="0.01" step="0.01" required>
 
-        <label for="notes">Notes:</label>
+        <label for="notes">ملاحظات:</label>
         <textarea id="notes" name="notes" style="direction: rtl;"></textarea>
         <div style="direction: rtl;">
             <input type="submit" value="تسجيل البيانات" id="submit">
