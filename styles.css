@@ -2,6 +2,7 @@
 body {
     background-color: lightpink;
     font-family: Arial, sans-serif;
+    direction: rtl;
 }
 
 /* Create a fuchsia frame */
@@ -45,6 +46,13 @@ textarea {
     margin-bottom: 15px;
     font-size: 22px;
 }
+
+input[type="submit"]:hover {
+    background-color: rgb(100, 1, 100);
+    color: white;
+    font-weight: bold;
+    /* SET COLOR IN BLACK */
+  }
 
 /* Style submit button */
 button[type="submit"] {

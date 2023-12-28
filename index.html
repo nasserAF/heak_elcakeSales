@@ -4,13 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Employee Form</title>
+
+    
+
+    <title>هيك الكيك - المبيعــــــات </title>
 </head>
 <body>
     <div class="container">
-    <h1>المبيـــــعات</h1>
+    <h1>المبيعــــــات</h1>
     <hr>
     <form id="employeeForm" name="contact-form" method="post" action="" >
+        <label for="currentDate">التاريخ:</label>
+        <input type="text" id="currentDate" name="currentDate" readonly>
+
         <label for="employeeId">الموظف:</label>
         <select id="employeeId" name="employeeId">
             <!-- Populate employee IDs dynamically (e.g., from a database) -->
@@ -58,5 +64,19 @@
 </div>
     <script src="Google Sheet.js"></script>
     <script src="script.js"></script>
+
+    <script>
+        // Function to get the current date in the format YYYY-MM-DD
+        function getCurrentDate() {
+          const now = new Date();
+          const year = now.getFullYear();
+          const month = String(now.getMonth() + 1).padStart(2, '0');
+          const day = String(now.getDate()).padStart(2, '0');
+          return `${year}-${month}-${day}`;
+        }
+    
+        // Assign the current date to the input field
+        document.getElementById('currentDate').value = getCurrentDate();
+      </script>
 </body>
 </html>
