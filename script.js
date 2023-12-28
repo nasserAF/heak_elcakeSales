@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 addItemOption('بيستاشيو');
                 addItemOption('فراولة');
                 break;
-            case '3':
+            case '4':
                 addItemOption('كوكيز');
                 addItemOption('قطع كوكيز');
                 break;
