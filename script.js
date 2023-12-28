@@ -52,6 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 addItemOption('شموع معطره');
                 addItemOption('نجوم الليل');
                 break;
+            case '8':
+                addItemOption('قهوة تركية');
+                addItemOption('قهوة امريكية');
+                break;
             default:
                 break;
         }
