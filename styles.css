@@ -28,6 +28,7 @@ label {
     color: fuchsia;
     display: block;
     margin-bottom: 10px;
+    font-size: 22px;
 }
 
 /* Style text inputs and select boxes */
