@@ -43,6 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 addItemOption('ميني تارت');
                 addItemOption('جوزية');
                 addItemOption('كاندي');
+                addItemOption('كب كيك كبير');
+                addItemOption('كب كيك وسط');
             break;
             case '7':
                 addItemOption('بالون هواء');
