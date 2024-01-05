@@ -1,4 +1,4 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzGk3A6TO790DZc0cJUIvgJo5PHpxsO1kyIQt_4471bkZQwkkonzkuBCbeXdxP-GCxu/exec'
+const scriptURL = 'https://script.google.com/macros/s/AKfycby5czqW2itqEnMulcWnfVla5yXuIeGlKBPK_pq74Sep3DU2C41OCf_B5Vk07b2NT6ltmw/exec'
 
 const form = document.forms['expensesForm']
 
