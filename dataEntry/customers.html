@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+
+    
+
+    <title>هيك الكيك - انضم الى قائمتنا </title>
+</head>
+<body>
+    <div class="container">
+    <h1>هيك الكيك - انضم الى قائمتنا</h1>
+    <hr>
+    <form id="customerForm" name="customersForm" method="post" action="" >
+        <label for="currentDate">التاريخ:</label>
+        <input type="text" id="currentDate" name="currentDate" readonly>
+
+        <label for="customerName">الاسم:</label>
+        <input type="text" id="customerName" name="customerName" placeholder="الاسم من اربع مقاطع" required>
+
+        <label for="customerMobile">الجوال:</label>
+        <input type="text" id="customerMobile" name="customerMobile" placeholder="07xxxxxxxx" required>
+
+        <label for="customerEmail">البريد الالكتروني:</label>
+        <input type="text" id="customerEmail" name="customerEmail">
+
+        <label for="instagram">انستقرام:</label>
+        <input type="text" id="instagram" name="instagram" placeholder="@instagram">
+
+        <label for="facebook">فيسبوك:</label>
+        <input type="text" id="facebook" name="facebook" placeholder="@facebook">
+
+        <label for="notes">ملاحظات:</label>
+        <textarea id="notes" name="notes" style="direction: rtl;"></textarea>
+
+        <div>
+            <input type="submit" value="تسجيل البيانات" id="submit">
+            <!-- <button type="submit">تسجيل البيانات</button> -->
+        </div>
+        
+    </form>
+</div>
+    <script src="customersSheet.js"></script>
+
+    <script>
+        // Function to get the current date in the format YYYY-MM-DD
+        function getCurrentDate() {
+          const now = new Date();
+          const year = now.getFullYear();
+          const month = String(now.getMonth() + 1).padStart(2, '0');
+          const day = String(now.getDate()).padStart(2, '0');
+          return `${year}-${month}-${day}`;
+        }
+    
+        // Assign the current date to the input field
+        document.getElementById('currentDate').value = getCurrentDate();
+      </script>
+</body>
+</html>

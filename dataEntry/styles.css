@@ -1,0 +1,64 @@
+/* Apply styles to the entire form container */
+body {
+    background-color: lightpink;
+    font-family: Arial, sans-serif;
+    direction: rtl;
+}
+
+/* Create a fuchsia frame */
+.container {
+    margin: 0 auto; /* Center the container horizontally */
+    width: 80%;
+    padding: 20px; /* Add some padding for spacing */
+    border: 2px solid fuchsia;
+    background-color: white; /* You can adjust this color as needed */
+}
+
+h1 {
+    color: fuchsia;
+    font-weight: bold;
+    text-align: center;
+}
+hr{
+    background-color: fuchsia;
+    width: 3px;;
+}
+
+/* Style labels */
+label {
+    color: fuchsia;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+/* Style text inputs and select boxes */
+input[type="text"],
+input[type="number"],
+input[type="submit"],
+select,
+textarea {
+    color: rgb(100, 1, 100);
+    background-color: white; /* You can adjust this color as needed */
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+input[type="submit"]:hover {
+    background-color: rgb(100, 1, 100);
+    color: white;
+    font-weight: bold;
+    /* SET COLOR IN BLACK */
+  }
+
+/* Style submit button */
+button[type="submit"] {
+    background-color: #ff69b4; /* Light pink */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
