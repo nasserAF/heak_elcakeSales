@@ -1,64 +1,141 @@
-/* Apply styles to the entire form container */
 body {
-    background-color: lightpink;
-    font-family: Arial, sans-serif;
-    direction: rtl;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  direction: rtl;
 }
 
-/* Create a fuchsia frame */
-.container {
-    margin: 0 auto; /* Center the container horizontally */
-    width: 80%;
-    padding: 20px; /* Add some padding for spacing */
-    border: 2px solid fuchsia;
-    background-color: white; /* You can adjust this color as needed */
+#userForm {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(146, 4, 122, 0.1);
+  width: 90%;
+  /* Set a fixed width for the form */
+  margin: 0 auto;
+  /* Center the form on the page */
+
 }
 
-h1 {
-    color: fuchsia;
-    font-weight: bold;
-    text-align: center;
-}
-hr{
-    background-color: fuchsia;
-    width: 3px;;
+h3 {
+  text-align: center;
+  color: #555;
+
+
 }
 
-/* Style labels */
+h5 {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
 label {
-    color: fuchsia;
-    display: block;
-    margin-bottom: 10px;
-    font-size: 22px;
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+  font-weight: bold;
 }
 
-/* Style text inputs and select boxes */
-input[type="text"],
-input[type="number"],
-input[type="submit"],
-select,
-textarea {
-    color: rgb(100, 1, 100);
-    background-color: white; /* You can adjust this color as needed */
-    border: 1px solid #ccc;
-    padding: 5px;
-    width: 100%;
-    margin-bottom: 15px;
-    font-size: 22px;
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.sub-container {
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  padding: 6px;
+  border-radius: 4px;
+  background-color: rgb(252, 192, 232);
+
+}
+
+.experience-entry {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  margin: 4px 4px 4px 4px;
+
+
+}
+
+.qualification-entry {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  margin: 4px 4px 4px 4px;
+
+}
+
+.input-group {
+  flex: 1;
+  margin-right: 10px;
+
+}
+
+.input-qualification-group {
+  flex: 1;
+  margin-right: 10px;
+
+}
+
+button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+input[type="submit"] {
+  background-color: rgb(235, 118, 196);
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+
 }
 
 input[type="submit"]:hover {
-    background-color: rgb(100, 1, 100);
-    color: white;
-    font-weight: bold;
-    /* SET COLOR IN BLACK */
-  }
+  background-color: rgb(202, 87, 164);
+}
 
-/* Style submit button */
-button[type="submit"] {
-    background-color: #ff69b4; /* Light pink */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
+.navbar {
+  background-color: #e91e63;
+  overflow: hidden;
+}
+
+.navbar a {
+  float: right;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 50px;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: bolder;
+}
+
+.navbar a:hover {
+  background-color: #c2185b;
 }
