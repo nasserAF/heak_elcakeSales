@@ -1,77 +1,18 @@
-
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>Cake Shop Candidates</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-            direction: rtl;
-        }
-
-        .navbar {
-            background-color: #e91e63;
-            overflow: hidden;
-        }
-
-        .navbar a {
-            float: right;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 50px;
-            text-decoration: none;
-            font-size: 17px;
-            font-weight: bolder;
-        }
-
-        .navbar a:hover {
-            background-color: #c2185b;
-        }
-
-        #candidateTable {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        #candidateTable th,
-        #candidateTable td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-
-        #candidateTable th {
-            background-color: #e91e63;
-            color: white;
-        }
-
-        .centerText {
-            text-align: center;
-        }
     </style>
+
     <!-- Add Firebase library -->
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
-    <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyCI7vG7AgENVJTvTCIat536tVHxMgDYHfY",
-            authDomain: "javatofirebase-2a038.firebaseapp.com",
-            databaseURL: "https://javatofirebase-2a038-default-rtdb.firebaseio.com",
-            projectId: "javatofirebase-2a038",
-            storageBucket: "javatofirebase-2a038.appspot.com",
-            messagingSenderId: "849207682175",
-            appId: "1:849207682175:web:29a9c4f15b9b862b564b4a"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-    </script>
+    <script src="script.js"></script>
+    <script src="readMultyNationalities.js"></script>
+
+    <link rel="stylesheet" href="navigationBar.css">
 </head>
 
 <body>
@@ -81,70 +22,18 @@
         <a href="https://nasseraf.github.io/heak_elcakeSales/dataEntry/index.html" target="_blank">المبيعات</a>
         <a href="https://nasseraf.github.io/heak_elcakeSales/dataEntry/expenses.html" target="_blank">المصروفات</a>
         <a href="https://nasseraf.github.io/heak_elcakeSales/dataEntry/customers.html" target="_blank">انضم الى قائمتنا</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#menu">Menu</a>
     </div>
     <div style="padding:16px">
         <table id="candidateTable">
             <tr>
-                <th class="centerText" style="background-color: #e91e63;">الاسم</th>
-                <th class="centerText" style="background-color: #e91e63;">تاريخ الميلاد</th>
-                <th class="centerText" style="background-color: #e91e63;">البريد الالكتروني</th>
-                <th class="centerText" style="background-color: #e91e63;">الخبرات</th>
-                <th class="centerText" style="background-color: #e91e63;">المؤهلات</th>
+                <th style="background-color: #e91e63;">الاسم</th>
+                <th style="background-color: #e91e63;">تاريخ الميلاد</th>
+                <th style="background-color: #e91e63;">البريد الالكتروني</th>
+                <th style="background-color: #e91e63;">الخبرات</th>
+                <th style="background-color: #e91e63;">المؤهلات</th>
             </tr>
         </table>
     </div>
-    <script>
-        var candidateRef = firebase.database().ref('candidateForJob');
-        candidateRef.on('value', function (snapshot) {
-            var data = snapshot.val();
-            var table = document.getElementById('candidateTable');
-
-            for (var key in data) {
-                if (data.hasOwnProperty(key)) {
-                    var row = table.insertRow(-1);
-                    var cell1 = row.insertCell(0);
-                    var cell2 = row.insertCell(1);
-                    var cell3 = row.insertCell(2);
-                    var cell4 = row.insertCell(3);
-                    var cell5 = row.insertCell(4);
-
-                    cell1.innerHTML = data[key].name;
-                    cell2.innerHTML = data[key].age;
-                    cell3.innerHTML = data[key].email;
-
-                    // Create a nested table for experiences with titled sub-columns
-                    var expTable = '<table style="width:100%"><tr><th style="background-color: #e91e63;">الخبرة</th><th style="background-color: #e91e63;">مدة الخبرة</th></tr>';
-                    data[key].experiences.forEach(function (exp) {
-                        expTable += '<tr><td>' + exp.experienc + '</td><td>' + exp.experiencYear + '</td></tr>';
-                    });
-                    expTable += '</table>';
-                    cell4.innerHTML = expTable;
-
-                    // Create a nested table for qualifications with titled sub-columns
-                    var qualTable = '<table style="width:100%"><tr><th style="background-color: #e91e63;">المؤهل</th><th style="background-color: #e91e63;">سنة التخرج</th></tr>';
-                    data[key].qualifications.forEach(function (qual) {
-                        qualTable += '<tr><td>' + qual.qualification + '</td><td>' + qual.qualificationYear + '</td></tr>';
-                    });
-                    qualTable += '</table>';
-                    cell5.innerHTML = qualTable;
-                }
-            }
-        });
-    </script>
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

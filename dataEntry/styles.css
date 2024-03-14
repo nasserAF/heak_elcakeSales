@@ -1,15 +1,3 @@
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  direction: rtl;
-}
-
 #userForm {
   background-color: #fff;
   padding: 20px;
@@ -118,24 +106,4 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
   background-color: rgb(202, 87, 164);
-}
-
-.navbar {
-  background-color: #e91e63;
-  overflow: hidden;
-}
-
-.navbar a {
-  float: right;
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 50px;
-  text-decoration: none;
-  font-size: 17px;
-  font-weight: bolder;
-}
-
-.navbar a:hover {
-  background-color: #c2185b;
 }
