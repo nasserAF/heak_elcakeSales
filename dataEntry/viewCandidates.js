@@ -19,7 +19,7 @@ var candidateRef = firebase.database().ref('candidateForJob');
                     cell4.innerHTML = data[key].mobile;
 
                     // Create a nested table for experiences with titled sub-columns
-                    var expTable = '<table style="width:100%"><tr><th style="background-color: #e91e63;">الخبرة</th><th style="background-color: #e91e63;">مدة الخبرة</th></tr>';
+                    var expTable = '<table style="width:100%"><tr><th style="background-color: #ffc0e9;color:#d11c8c;">الخبرة</th><th style="background-color: #ffc0e9;color:#d11c8c;">مدة الخبرة</th></tr>';
                     data[key].experiences.forEach(function (exp) {
                         expTable += '<tr><td class="textAlignRight">' + exp.experienc + '</td><td class="textAlignRight">' + exp.experiencYear + '</td></tr>';
                     });
@@ -27,7 +27,7 @@ var candidateRef = firebase.database().ref('candidateForJob');
                     cell5.innerHTML = expTable;
 
                     // Create a nested table for qualifications with titled sub-columns
-                    var qualTable = '<table style="width:100%"><tr><th style="background-color: #e91e63;">المؤهل</th><th style="background-color: #e91e63;">سنة التخرج</th></tr>';
+                    var qualTable = '<table style="width:100%"><tr><th style="background-color: #ffc0e9;color:#d11c8c;">المؤهل</th><th style="background-color: #ffc0e9;color:#d11c8c;">سنة التخرج</th></tr>';
                     data[key].qualifications.forEach(function (qual) {
                         qualTable += '<tr><td class="textAlignRight">' + qual.qualification + '</td><td class="textAlignRight">' + qual.qualificationYear + '</td></tr>';
                     });
