@@ -1,3 +1,9 @@
+/* Apply styles to the entire form container */
+body {
+  background-color: lightpink;
+  font-family: Arial, sans-serif;
+}
+
 #userForm {
   background-color: #fff;
   padding: 20px;
@@ -7,27 +13,6 @@
   /* Set a fixed width for the form */
   margin: 0 auto;
   /* Center the form on the page */
-
-}
-
-h3 {
-  text-align: center;
-  color: #555;
-
-
-}
-
-h5 {
-  display: block;
-  margin-bottom: 5px;
-  color: #555;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  color: #555;
-  font-weight: bold;
 }
 
 input {
@@ -106,4 +91,15 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
   background-color: rgb(202, 87, 164);
+}
+
+.container {
+  margin: 0 auto;
+  /* Center the container horizontally */
+  width: 80%;
+  padding: 20px;
+  /* Add some padding for spacing */
+
+  background-color: white;
+  /* You can adjust this color as needed */
 }

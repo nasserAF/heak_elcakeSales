@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault();
     userName = nameInput.value;
     userEmail = emailInput.value;
-    var userMobile = mobileInput;
+    var userMobile = mobileInput.value;
     /* userName = nameInput.value; */
     var userAge = ageInput.value;
     var qualifications = getStructuredValuesFromContainer(qualificationContainer, 1);

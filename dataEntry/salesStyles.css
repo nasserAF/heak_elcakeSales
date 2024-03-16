@@ -1,0 +1,41 @@
+/* Apply styles to the entire form container */
+body {
+    background-color: lightpink;
+    font-family: Arial, sans-serif;
+  }
+  
+  #employeeForm {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(146, 4, 122, 0.1);
+    width: 90%;
+    /* Set a fixed width for the form */
+    margin: 0 auto;
+    /* Center the form on the page */
+  }
+  
+  input,
+  textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  /* Create a fuchsia frame */
+  .container {
+    margin: 0 auto;
+    /* Center the container horizontally */
+    width: 80%;
+    padding: 20px;
+    /* Add some padding for spacing */
+  
+    background-color: white;
+    /* You can adjust this color as needed */
+  }
+  
+  
