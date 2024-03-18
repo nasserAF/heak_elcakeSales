@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="customersStyle.css">
+
+    <link rel="stylesheet" href="generalForm.css">
+    <script src="navbar.js"></script>
+
+    <title>هيك الكيك - انضم الى قائمتنا </title>
+</head>
+
+<body>
+    <div id="navbarContainer"></div>
+    <div class="container">
+        <h1>انضم الى قائمتنا</h1>
+        <hr class="customHR">
+        <div class="formDiv">
+            <form id="customerForm" name="customersForm" method="post" action="">
+                <input style="border: 0px;text-align: left;" type="text" id="currentDate" name="currentDate" placeholder="" readonly>
+                <!-- <label>البيانات الشخصية</label> -->
+                <div class="sub-container" id="personalInfo">
+                    <!-- <label for="currentDate">التاريخ:</label> -->
+
+
+                    <!-- <label for="customerName">الاسم:</label> -->
+                    <input type="text" id="customerName" name="customerName" placeholder="الاسم من اربع مقاطع" required>
+
+                    <!-- <label for="customerMobile">الجوال:</label> -->
+                    <input type="text" id="customerMobile" name="customerMobile" placeholder="07xxxxxxxx" required>
+
+                    <!-- <label for="customerEmail">البريد الالكتروني:</label> -->
+                    <input type="text" id="customerEmail" name="customerEmail" placeholder="مثال abc@xyz.com" required>
+
+                    <!-- <label for="instagram">انستقرام:</label> -->
+                    <input style="direction: ltr;text-align: right;" type="text" id="instagram" name="instagram"
+                        placeholder="مثال @instagramAccount">
+                    <!-- <label for="facebook">فيسبوك:</label> -->
+                    <input style="direction: ltr;text-align: right;" type="text" id="facebook" name="facebook"
+                        placeholder="مثال @facebookAccount">
+
+                    <!-- <label for="notes">ملاحظات:</label> -->
+                    <textarea id="notes" name="notes"
+                        placeholder="في حال وجود ملاحظة، الرجاء عدم التردد في تسجيلها."></textarea>
+
+                    <div>
+                        <input type="submit" value="تسجيل البيانات" id="submit">
+                        <!-- <button type="submit">تسجيل البيانات</button> -->
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+    <script src="customersSheet.js"></script>
+    <script>
+        // Function to get the current date in the format YYYY-MM-DD
+        function getCurrentDate() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
+        // Assign the current date to the input field
+        document.getElementById('currentDate').value = getCurrentDate();
+    </script>
+</body>
+
+</html>

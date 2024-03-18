@@ -1,0 +1,10 @@
+{
+    "items": {
+        "cake": ["pizza", "rice"],
+        "cakePieces": ["pepsi", "coffee"],
+        "cheesecakePieces": ["burger"],
+        "cups": ["burger"],
+        "desserts": ["burger"],
+        "accessories": ["burger"]
+    }
+}

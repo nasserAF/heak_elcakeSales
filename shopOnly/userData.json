@@ -1,0 +1,16 @@
+{
+  "name": "NASDAQ MOOD ABIFARAH",
+  "age": null,
+  "nationalities": [
+    {
+      "nationality": "ناصر محمد ابو فاره",
+      "passport": "123456"
+    }
+  ],
+  "qualifications": [
+    {
+      "qualification": "ماجستير",
+      "qualificationYear": "2007"
+    }
+  ]
+}

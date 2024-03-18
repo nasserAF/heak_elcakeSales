@@ -1,0 +1,52 @@
+.formDiv{
+    direction: rtl;
+}
+
+h1 {
+    color: #d11c8c;
+    font-weight: bold;
+    text-align: center;
+    font-size: 25px;
+  }
+  
+  label {
+    color: #d11c8c;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+  
+  /* Style text inputs and select boxes */
+  input[type="text"],
+  input[type="number"],
+  select,
+  textarea {
+    color: #d11c8c;
+    background-color: white; /* You can adjust this color as needed */
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 20px;
+  }
+  
+  input[type="submit"]{
+    color: #fff;
+    background-color: #d11c8c;;
+    border: 1px solid #ccc;
+    padding: 12px;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 25px;
+    height: 65px;
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
+  
+  input[type="submit"]:hover{
+    color: #d11c8c;
+    background-color: #ffbcee;;
+    font-weight: bold;
+  }
+
+  /* Style submit button */
