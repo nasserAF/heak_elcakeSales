@@ -1,20 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>بيانات طلبات التوظيف</title>
-  <link rel="stylesheet" href="viewRecruitments.css"> 
+    <title>بيانات طلبات التوظيف</title>
+    <link rel="stylesheet" href="viewRecruitments.css">
+    <style>
+        /* Add styles for the popup as needed */
+        #popup-div {
+            display: none;
+            /* Initially hidden */
+            position: fixed;
+            /* or absolute */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* Center the popup */
+            z-index: 1000;
+            /* Ensure it's on top */
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            /* Add more styles as needed (width, height, etc.) */
+        }
+    </style>
 </head>
+
 <body>
-  <h1>بيانات طلبات التوظيف</h1>
-  <table id="data-table" style="direction: rtl; text-align: right;">
-    <thead></thead>  <!-- Add <thead> for table header -->
-    <tbody></tbody>  <!-- Add <tbody> for table body -->
-  </table>
-  <script src="viewRecruitments.js"></script>
+    <h1>بيانات طلبات التوظيف</h1>
+    <table id="data-table" style="direction: rtl; text-align: right;">
+        <thead></thead>
+        <tbody></tbody>
+    </table>
+
+    <div id="popup-div">
+        <form id="update-form">
+        </form>
+        <button id="update-btn">Update</button>
+    </div>
+
+    <script src="viewRecruitments.js"></script>
 </body>
+
 </html>
-
-
-
-
-

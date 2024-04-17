@@ -1,68 +1,166 @@
-const webAppUrl = 'https://script.google.com/macros/s/AKfycbxntLhCZji-EdUCUMP8fkgHMIlLQJfvOf2jhpir6VziAPzbdEX60OTvTRc18nga7MXptg/exec'; // Replace with your Apps Script URL
+const webAppUrl = 'https://script.google.com/macros/s/AKfycbzV42vWSMrNGAiUmStLIbgJotfoOywN_aQbF83188qX6_Ir-8jXTEPN1fFXV1CCA7BrPw/exec'; // Replace with your Apps Script URL
 
-// Dictionaries for translation
 const translations = {
-  fullName: 'الاسم الرباعي',
-  DOB: 'تاريخ الميلاد',
-  mobile: 'الجوال',
-  email: 'البريد الالكتروني',
-  materialStatus: 'الحالة الاجتماعية',
-  address: 'العنوان',
-  lastQualification: 'اخر مؤهل علمي',
-  experience1: 'خبرة 1',
-  experience2: 'خبرة 2',
-  experience3: 'خبرة 3'
+    fullName: 'الاسم الرباعي',
+    DOB: 'تاريخ الميلاد',
+    mobile: 'الجوال',
+    email: 'البريد الالكتروني',
+    materialStatus: 'الحالة الاجتماعية',
+    address: 'العنوان',
+    lastQualification: 'اخر مؤهل علمي',
+    experience1: 'خبرة 1',
+    experience2: 'خبرة 2',
+    experience3: 'خبرة 3'
 };
 const lastQualificationMapping = {
-  1: 'اعداد',
-  2: 'توجيهي',
-  3: 'دبلوم',
-  4: 'بكالوريوس',
-  5: 'ماجستير'
+    1: 'اعداد',
+    2: 'توجيهي',
+    3: 'دبلوم',
+    4: 'بكالوريوس',
+    5: 'ماجستير'
 };
+const additionalColumns = ["is-pas", "is-flower", "is-coffee", "is-photography", "is-talk", "is-goog-shape", "notes"];
+
+let headers; 
+
+
+
+
+
+
+
+
 
 fetch(webAppUrl)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`Network response was not ok (status ${response.status})`);
-    }
-    return response.json();
-  })
-  .then(data => {
-    const table = document.getElementById('data-table');
-
-    // Extract and translate headers
-    const headers = data.shift();
-    const translatedHeaders = headers.map(header => translations[header] || header);
-
-    // Create table header row
-    const headerRow = table.insertRow();
-    translatedHeaders.forEach(header => {
-      const headerCell = headerRow.insertCell();
-      headerCell.textContent = header;
-    });
-
-    // Populate table rows with translated data
-    data.forEach(row => {
-      const tableRow = table.insertRow();
-      row.forEach((cellData, cellIndex) => {
-        const cell = tableRow.insertCell();
-
-        // Translate specific columns
-        if (cellIndex === 4) { // materialStatus
-          cell.textContent = cellData === 1 ? 'متزوجة' : 'غير متزوجة';
-        } else if (cellIndex === 6) { // lastQualification
-          cell.textContent = lastQualificationMapping[cellData] || 'غير محدد';
-        } else {
-          cell.textContent = cellData; 
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Network response was not ok (status ${response.status})`);
         }
-      });
+        return response.json();
+    })
+    .then(data => {
+        const table = document.getElementById('data-table');
+        const tbody = table.querySelector('tbody');
+
+        headers = data.shift(); 
+        const translatedHeaders = headers.map(header => translations[header] || header);
+
+        const headerRow = table.querySelector('thead').insertRow();
+        translatedHeaders.forEach(header => {
+            const headerCell = headerRow.insertCell();
+            headerCell.textContent = header;
+        });
+
+        data.forEach((row, rowIndex) => {
+            const tableRow = tbody.insertRow();
+            row.forEach((cellData, cellIndex) => {
+                const cell = tableRow.insertCell();
+                if (cellIndex === 4) {
+                    cell.textContent = cellData === 1 ? 'متزوجة' : 'غير متزوجة';
+                } else if (cellIndex === 6) {
+                    cell.textContent = lastQualificationMapping[cellData] || 'غير محدد';
+                } else {
+                    cell.textContent = cellData;
+                }
+            });
+
+            const evaluateBtnCell = tableRow.insertCell();
+            const evaluateBtn = document.createElement('button');
+            evaluateBtn.textContent = 'Evaluate';
+            evaluateBtn.classList.add('evaluate-btn');
+            evaluateBtn.dataset.rowIndex = rowIndex;
+            evaluateBtnCell.appendChild(evaluateBtn);
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching or parsing data:', error);
+        alert('An error occurred while fetching data. Please try again later.');
     });
-  })
-  .catch(error => {
-    console.error('Error fetching or parsing data:', error);
-    const errorMessage = document.createElement('p');
-    errorMessage.textContent = "حدث خطأ أثناء تحميل البيانات. يرجى المحاولة مرة أخرى لاحقًا.";
-    errorMessage.style.color = 'red';
-    document.body.appendChild(errorMessage);
-  });
+
+function showPopup(rowData, rowIndex) {
+    const popupDiv = document.getElementById('popup-div');
+    console.log("showPopup called", rowIndex); // Debugging line
+    const form = document.getElementById('update-form');
+    form.innerHTML = '';
+
+    additionalColumns.forEach(column => {
+        const label = document.createElement('label');
+        label.textContent = column + ': ';
+        const radioYes = document.createElement('input');
+        radioYes.type = 'radio';
+        radioYes.name = column;
+        radioYes.value = '1';
+        const radioNo = document.createElement('input');
+        radioNo.type = 'radio';
+        radioNo.name = column;
+        radioNo.value = '0';
+        if (rowData[headers.indexOf(column)] === '1') {
+            radioYes.checked = true;
+        } else {
+            radioNo.checked = true;
+        }
+        label.appendChild(radioYes);
+        label.appendChild(document.createTextNode('Yes '));
+        label.appendChild(radioNo);
+        label.appendChild(document.createTextNode('No'));
+        form.appendChild(label);
+        form.appendChild(document.createElement('br'));
+    });
+
+    const notesLabel = document.createElement('label');
+    notesLabel.textContent = 'Notes: ';
+    const notesInput = document.createElement('input');
+    notesInput.type = 'text';
+    notesInput.name = 'notes';
+    notesInput.value = rowData[headers.indexOf('notes')]; 
+    notesLabel.appendChild(notesInput);
+    form.appendChild(notesLabel);
+    form.appendChild(document.createElement('br'));
+
+    form.dataset.rowIndex = rowIndex; 
+    popupDiv.style.display = 'block'; 
+    console.log("Popup should be visible now"); // Debugging line 
+}
+
+document.addEventListener('click', (event) => {
+    const clickedElement = event.target;
+    if (clickedElement.classList.contains('evaluate-btn')) {
+        console.log("Evaluate button clicked"); // Debugging line
+        const row = clickedElement.closest('tr');
+        const rowIndex = clickedElement.dataset.rowIndex;
+        const rowData = Array.from(row.cells).map(cell => cell.textContent);
+        showPopup(rowData, rowIndex);
+    }
+});
+
+document.getElementById('update-btn').addEventListener('click', () => {
+    const formData = new FormData(document.getElementById('update-form')); 
+    const updatedData = {};
+    for (const [key, value] of formData.entries()) {
+        updatedData[key] = value;
+    }
+    updatedData.rowIndex = document.getElementById('update-form').dataset.rowIndex;
+
+    fetch(webAppUrl, {
+        method: 'POST',
+        body: JSON.stringify(updatedData),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Network response was not ok (status ${response.status})`);
+        }
+        return response.text(); 
+    })
+    .then(responseText => {
+        console.log(responseText); 
+        alert("Data updated successfully!");
+        document.getElementById('popup-div').style.display = 'none'; 
+    })
+    .catch(error => {
+        console.error('Error updating data:', error);
+        // ... Handle errors (e.g., display error message) ...
+    });
+});
