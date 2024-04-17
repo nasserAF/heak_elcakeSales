@@ -1,4 +1,4 @@
-const webAppUrl = 'https://script.google.com/macros/s/AKfycbzV42vWSMrNGAiUmStLIbgJotfoOywN_aQbF83188qX6_Ir-8jXTEPN1fFXV1CCA7BrPw/exec'; // Replace with your Apps Script URL
+const webAppUrl = 'https://script.google.com/macros/s/AKfycbz_CsmLUd8la3V7uHDtfrKgrYMgr6b0WMqoVLouOMK9Gc-M5Bvmiao4XbKB62Z485vhZg/exec'; // Replace with your Apps Script URL
 
 const translations = {
     fullName: 'الاسم الرباعي',
