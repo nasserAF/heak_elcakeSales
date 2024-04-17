@@ -21,14 +21,7 @@ const lastQualificationMapping = {
 };
 const additionalColumns = ["is-pas", "is-flower", "is-coffee", "is-photography", "is-talk", "is-goog-shape", "notes"];
 
-let headers; 
-
-
-
-
-
-
-
+let headers;
 
 
 fetch(webAppUrl)
@@ -36,13 +29,20 @@ fetch(webAppUrl)
         if (!response.ok) {
             throw new Error(`Network response was not ok (status ${response.status})`);
         }
-        return response.json();
+        // Check Content-Type header to determine response type
+        const contentType = response.headers.get('Content-Type');
+        if (contentType && contentType.includes('application/json')) {
+            return response.json();
+        } else {
+            // Handle non-JSON response (e.g., display an error message)
+            throw new Error('Expected JSON response but received a different format.');
+        }
     })
     .then(data => {
         const table = document.getElementById('data-table');
         const tbody = table.querySelector('tbody');
 
-        headers = data.shift(); 
+        headers = data.shift();
         const translatedHeaders = headers.map(header => translations[header] || header);
 
         const headerRow = table.querySelector('thead').insertRow();
@@ -112,13 +112,13 @@ function showPopup(rowData, rowIndex) {
     const notesInput = document.createElement('input');
     notesInput.type = 'text';
     notesInput.name = 'notes';
-    notesInput.value = rowData[headers.indexOf('notes')]; 
+    notesInput.value = rowData[headers.indexOf('notes')];
     notesLabel.appendChild(notesInput);
     form.appendChild(notesLabel);
     form.appendChild(document.createElement('br'));
 
-    form.dataset.rowIndex = rowIndex; 
-    popupDiv.style.display = 'block'; 
+    form.dataset.rowIndex = rowIndex;
+    popupDiv.style.display = 'block';
     console.log("Popup should be visible now"); // Debugging line 
 }
 
@@ -134,7 +134,7 @@ document.addEventListener('click', (event) => {
 });
 
 document.getElementById('update-btn').addEventListener('click', () => {
-    const formData = new FormData(document.getElementById('update-form')); 
+    const formData = new FormData(document.getElementById('update-form'));
     const updatedData = {};
     for (const [key, value] of formData.entries()) {
         updatedData[key] = value;
@@ -148,19 +148,41 @@ document.getElementById('update-btn').addEventListener('click', () => {
             'Content-Type': 'application/json'
         }
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`Network response was not ok (status ${response.status})`);
-        }
-        return response.text(); 
-    })
-    .then(responseText => {
-        console.log(responseText); 
-        alert("Data updated successfully!");
-        document.getElementById('popup-div').style.display = 'none'; 
-    })
-    .catch(error => {
-        console.error('Error updating data:', error);
-        // ... Handle errors (e.g., display error message) ...
-    });
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Network response was not ok (status ${response.status})`);
+            }
+            return response.text();
+        })
+        .then(responseText => {
+            console.log(responseText);
+            alert("Data updated successfully!");
+            document.getElementById('popup-div').style.display = 'none';
+        })
+        .catch(error => {
+            console.error('Error updating data:', error);
+            // ... Handle errors (e.g., display error message) ...
+        });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
