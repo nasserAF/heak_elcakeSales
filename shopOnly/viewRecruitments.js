@@ -26,8 +26,9 @@ let headers;
 
 fetch(webAppUrl)
   .then(response => {
-    if (!response.ok) {
-      throw new Error(`Network response was not ok (status ${response.status})`);
+    if (response.ok) {
+      //throw new Error(`Network response was not ok (status ${response.status})`);
+        console.log("response is OK");
     }
     // Check Content-Type header to determine response type
     const contentType = response.headers.get('Content-Type');
