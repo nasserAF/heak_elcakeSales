@@ -25,57 +25,54 @@ let headers;
 
 
 fetch(webAppUrl)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`Network response was not ok (status ${response.status})`);
-        }
-        // Check Content-Type header to determine response type
-        const contentType = response.headers.get('Content-Type');
-        if (contentType && contentType.includes('application/json')) {
-            return response.json();
-        } else {
-            // Handle non-JSON response (e.g., display an error message)
-            throw new Error('Expected JSON response but received a different format.');
-        }
-    })
-    .then(data => {
-        const table = document.getElementById('data-table');
-        const tbody = table.querySelector('tbody');
-
-        headers = data.shift();
-        const translatedHeaders = headers.map(header => translations[header] || header);
-
-        const headerRow = table.querySelector('thead').insertRow();
-        translatedHeaders.forEach(header => {
-            const headerCell = headerRow.insertCell();
-            headerCell.textContent = header;
-        });
-
-        data.forEach((row, rowIndex) => {
-            const tableRow = tbody.insertRow();
-            row.forEach((cellData, cellIndex) => {
-                const cell = tableRow.insertCell();
-                if (cellIndex === 4) {
-                    cell.textContent = cellData === 1 ? 'متزوجة' : 'غير متزوجة';
-                } else if (cellIndex === 6) {
-                    cell.textContent = lastQualificationMapping[cellData] || 'غير محدد';
-                } else {
-                    cell.textContent = cellData;
-                }
-            });
-
-            const evaluateBtnCell = tableRow.insertCell();
-            const evaluateBtn = document.createElement('button');
-            evaluateBtn.textContent = 'Evaluate';
-            evaluateBtn.classList.add('evaluate-btn');
-            evaluateBtn.dataset.rowIndex = rowIndex;
-            evaluateBtnCell.appendChild(evaluateBtn);
-        });
-    })
-    .catch(error => {
-        console.error('Error fetching or parsing data:', error);
-        alert('An error occurred while fetching data. Please try again later.');
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`Network response was not ok (status ${response.status})`);
+    }
+    // Check Content-Type header to determine response type
+    const contentType = response.headers.get('Content-Type');
+    if (contentType && contentType.includes('application/json')) {
+      return response.json();
+    } else {
+      // Handle non-JSON response (e.g., display an error message)
+      throw new Error('Expected JSON response but received a different format.');
+    }
+  })
+  .then(data => {
+    const table = document.getElementById('data-table');
+    const tbody = table.querySelector('tbody');
+    headers = data.shift(); // Assuming 'headers' is declared elsewhere or should be declared here
+    const translatedHeaders = headers.map(header => translations[header] || header); // Assuming 'translations' is declared elsewhere
+    const headerRow = table.querySelector('thead').insertRow();
+    translatedHeaders.forEach(header => {
+      const headerCell = headerRow.insertCell();
+      headerCell.textContent = header;
     });
+    data.forEach((row, rowIndex) => {
+      const tableRow = tbody.insertRow();
+      row.forEach((cellData, cellIndex) => {
+        const cell = tableRow.insertCell();
+        if (cellIndex === 4) {
+          cell.textContent = cellData === 1 ? 'متزوجة' : 'غير متزوجة';
+        } else if (cellIndex === 6) {
+          cell.textContent = lastQualificationMapping[cellData] || 'غير محدد'; // Assuming 'lastQualificationMapping' is declared elsewhere
+        } else {
+          cell.textContent = cellData;
+        }
+      });
+      const evaluateBtnCell = tableRow.insertCell();
+      const evaluateBtn = document.createElement('button');
+      evaluateBtn.textContent = 'Evaluate';
+      evaluateBtn.classList.add('evaluate-btn');
+      evaluateBtn.dataset.rowIndex = rowIndex;
+      evaluateBtnCell.appendChild(evaluateBtn);
+    });
+  })
+  .catch(error => {
+    console.error('Error fetching or parsing data:', error);
+    alert('An error occurred while fetching data. Please try again later.');
+  });
+
 
 function showPopup(rowData, rowIndex) {
     const popupDiv = document.getElementById('popup-div');
@@ -164,25 +161,3 @@ document.getElementById('update-btn').addEventListener('click', () => {
             // ... Handle errors (e.g., display error message) ...
         });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
